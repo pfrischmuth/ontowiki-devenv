@@ -50,6 +50,24 @@ services:
     ports:
       - "3307:3306"
 
+  stardog-dev:
+    image: aksw/dld-store-stardog
+    container_name: ontowiki-devenv-stardog-dev
+    volumes:
+      - /stardog
+    ports:
+      - "5820:5820"
+      - "8080:80"
+
+  stardog-test:
+    image: aksw/dld-store-stardog
+    container_name: ontowiki-devenv-stardog-test
+    volumes:
+      - /stardog
+    ports:
+      - "5821:5820"
+      - "8081:80"
+
   phpserver:
     build: ./docker/php
     image: ontowiki-devenv/phpserver
@@ -59,10 +77,11 @@ services:
     links:
       - virtuoso-dev
       - mysql-dev
+      - stardog-dev
 
   nginx:
     build: ./docker/nginx
-    image: ontowiki-devenv/nginx2
+    image: ontowiki-devenv/nginx
     container_name: ontowiki-devenv-nginx
     volumes:
       - ./..:/var/www

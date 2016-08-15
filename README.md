@@ -94,7 +94,7 @@ or
 
 or
 
-    docker run --rm -v `pwd`/..:/var/www -e EF_STORE_ADAPTER=virtuoso --link ontowiki-devenv-virtuoso-test:virtuoso-test --net devenv_default ontowiki-devenv/phpserver /bin/sh -c 'cd /var/www && php vendor/bin/phpunit --testsuite "OntoWiki Virtuoso Integration Tests"'
+    docker run --rm -v `pwd`/..:/var/www -e EF_STORE_ADAPTER=virtuoso --net devenv_default ontowiki-devenv/phpserver /bin/sh -c 'cd /var/www && php vendor/bin/phpunit --testsuite "OntoWiki Virtuoso Integration Tests"'
 
 ### Integration tests with MySQL
 
@@ -102,7 +102,15 @@ or
 
 or
 
-    docker run --rm -v `pwd`/..:/var/www -e EF_STORE_ADAPTER=zenddb --link ontowiki-devenv-mysql-test:mysql-test --net devenv_default ontowiki-devenv/phpserver /bin/sh -c 'cd /var/www && php vendor/bin/phpunit --testsuite "OntoWiki Virtuoso Integration Tests"'
+    docker run --rm -v `pwd`/..:/var/www -e EF_STORE_ADAPTER=zenddb --net devenv_default ontowiki-devenv/phpserver /bin/sh -c 'cd /var/www && php vendor/bin/phpunit --testsuite "OntoWiki Virtuoso Integration Tests"'
+
+### Integration tests with Stardog
+
+    make test-stardog
+
+or
+
+    docker run --rm -v `pwd`/..:/var/www -e EF_STORE_ADAPTER=stardog --net devenv_default ontowiki-devenv/phpserver /bin/sh -c 'cd /var/www && php vendor/bin/phpunit --testsuite "OntoWiki Virtuoso Integration Tests"'
 
 ## Tips & Tricks
 

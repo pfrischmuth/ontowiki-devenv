@@ -1,8 +1,11 @@
 FROM ubuntu:14.04
 
 RUN apt-get update \
- && apt-get install -y libvirtodbc0 raptor-utils \
- && apt-get install -y php5-fpm php5-cli php5-mysql php5-odbc php5-xdebug \
+ && apt-get install -y software-properties-common \
+ && add-apt-repository ppa:costamagnagianfranco/ettercap-stable-backports \
+ && apt-get update \
+ && apt-get install -y libvirtodbc0 raptor-utils curl \
+ && apt-get install -y php5-fpm php5-cli php5-mysql php5-odbc php5-xdebug php5-curl \
  && apt-get install -y php5-common php5-tidy php5-xsl php5-xmlrpc php5-gd php5-memcache php5-memcached \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
